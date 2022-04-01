@@ -484,6 +484,7 @@ for _, strategy in helpers.each_strategy() do
       end)
       describe("Without authentication (IP address)", function()
         it_with_retry("blocks if exceeding limit #grpc", function()
+          print("TTTT")
           for i = 1, 6 do
             print(i)
             local ok, res = helpers.proxy_client_grpc(){
@@ -530,7 +531,6 @@ for _, strategy in helpers.each_strategy() do
       describe("With authentication", function()
         describe("API-specific plugin", function()
           it_with_retry("blocks if exceeding limit", function()
-            print("TTTT")
             for i = 1, 6 do
               local res = GET("/status/200?apikey=apikey123", {
                 headers = { Host = "test3.com" },
