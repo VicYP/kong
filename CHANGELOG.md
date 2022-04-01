@@ -71,6 +71,9 @@
   when a target is removed or updated, the DNS record associated with it is
   removed from the list of hostnames to be resolved.
   [#8497](https://github.com/Kong/kong/pull/8497)
+- Fixed an issue where using the consistent-hashing load-balancing algorithm
+  and the header set in the `hash_on_header` property was not found in the
+  request, proxying would fail. [#8142](https://github.com/Kong/kong/pull/8142)
 
 #### Plugins
 
