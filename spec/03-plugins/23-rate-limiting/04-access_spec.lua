@@ -502,6 +502,8 @@ for _, strategy in helpers.each_strategy() do
             local reset = tonumber(string.match(res, "ratelimit%-reset: (%d+)"))
             assert.equal(true, reset <= 60 and reset >= 0)
 
+            ngx.sleep(0.5)
+
           end
 
           -- Additonal request, while limit is 6/minute
@@ -528,6 +530,7 @@ for _, strategy in helpers.each_strategy() do
       describe("With authentication", function()
         describe("API-specific plugin", function()
           it_with_retry("blocks if exceeding limit", function()
+            print("TTTT")
             for i = 1, 6 do
               local res = GET("/status/200?apikey=apikey123", {
                 headers = { Host = "test3.com" },
